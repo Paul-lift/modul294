@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let numbers = [];
+
+      function pushNumber(input) {
+        if (!Number.isInteger(input)) {
+          alert("Keine gültige Eingabe");
+        } else {
+          numbers.push(input);
+        }
+      }
+
+      while (true) {
+        let userInput = prompt("gib mir eine zahl");
+        if (userInput === "" || userInput === null) {
+          break;
+        }
+
+        let input = Number(userInput); 
+        pushNumber(input);
+      }
+
+      let result = numbers.reduce((sum, current) => sum + current, 0);
+
+      alert("Summe: " + result);
+    </script>
+  </body>
+</html>
