@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game Store</title>
+  </head>
+
+  <body>
+    <h1>Game Store</h1>
+    <div id="game-of-the-day">Fortnight</div>
+    <h2>New Releases</h2>
+    <ul class="games">
+      <li>Doom Eternal</li>
+      <li class="sale">Resident Evil Village</li>
+      <li>Ratchet & Clank: Rift Apart</li>
+      <li>Deathloop</li>
+    </ul>
+    <h2>Top Sellers</h2>
+    <ul class="games">
+      <li>PlayerUnknown's Battlegrounds</li>
+      <li>Grand Theft Auto V</li>
+      <li class="sale">Among Us</li>
+      <li>Minecraft</li>
+    </ul>
+    <h2>Free to Play</h2>
+    <ul class="games">
+      <li class="sale">Dota 2</li>
+      <li>Team Fortress 2</li>
+      <li>Apex Legends</li>
+      <li>Warframe</li>
+    </ul>
+
+    <script>
+      const games = document.querySelectorAll(".games");
+      const newGames = games[0];
+      const topSellers = games[1];
+      const f2p = games[2];
+      console.log(games);
+
+      //Alle Spiele im berreiche NEW GAMES
+      const newGamesList = newGames.childNodes;
+      newGamesList.forEach((element) => {
+        console.log(element.textContent);
+      });
+
+      //Wähle das zweite Spiel im Bereich "Bestseller" aus.
+      const topSellersList = topSellers.querySelectorAll("li");
+      console.log(topSellersList[1].textContent);
+
+      //Wähle das letzte Spiel im Bereich "Kostenlos spielen" aus.
+      const f2plist = f2p.querySelectorAll("li");
+      console.log(f2plist[0].textContent);
+
+      //Wähle alle Listenelemente im Bereich "Bestseller" aus.
+      console.log(topSellersList);
+
+      //Wähle das h1-Element aus.
+      console.log(document.querySelector("h1"));
+
+      //Wähle das game-of-the-day aus
+      const gotd = document.getElementById("game-of-the-day");
+      console.log(gotd);
+
+	  //Wähle alle Spiele aus, die im Sale sind
+	  const sale = document.querySelectorAll(".sale")
+	  console.log(sale)
+
+    </script>
+  </body>
+</html>
