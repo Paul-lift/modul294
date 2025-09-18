@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="test.css" />
+
+  </head>
+  <body>
+    <h1>Platzhalter</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quia
+      labore saepe ipsum maxime corrupti placeat rerum veritatis iste deserunt
+      laboriosam, laborum itaque optio accusamus ducimus in commodi quae
+      excepturi.
+    </p>
+    <ul>
+      <li>erstes Listen Element</li>
+      <li>zweites Listen Element</li>
+    </ul>
+
+    <script>
+      const body = document.querySelector("body");
+      const ul = document.querySelector("ul");
+      const h1 = document.querySelector("h1");
+      const img = document.createElement("img");
+
+      function changeBackgroundColor(color) {
+        body.style.backgroundColor = color;
+      }
+
+      function changeBackgroundColorRandom() {
+        const randomColor =
+          "#" + Math.floor(Math.random() * 16777215).toString(16);
+
+        body.style.backgroundColor = randomColor;
+      }
+      
+      function rotateImage(){
+      }
+
+      function changeHeaderName(string) {
+        const header = document.querySelector("h1");
+        header.textContent = string;
+      }
+
+      function addClassToElement(selector, className) {
+        const elementList = document.querySelectorAll(selector);
+
+        elementList.forEach((element) => {
+          element.classList.add("large");
+        });
+      }
+
+      function addNewLiElement() {
+        const element = document.createElement("li");
+        element.textContent = "drittes Listen Element";
+        ul.append(element);
+        //aufgabe 2. element löschen, keine lust gehabt neue funktion machen
+        const secondLi = ul.children[1];
+        secondLi.remove();
+      }
+
+      function pictureAfterHeader() {
+        img.src = "./image.png";
+        h1.insertAdjacentElement("afterend", img);
+      }
+
+      const list = [
+        "item1",
+        "item1",
+        "item1",
+        "item1",
+        "item1",
+        "item1",
+        "item1",
+        "item8",
+        "item9",
+        "item10",
+      ];
+
+      function keinPlanBinMuede() {
+        list.forEach((element) => {
+          const li = document.createElement("li");
+          li.textContent = element;
+          ul.append(li);
+        });
+      }
+
+      window.onload = () => {
+        changeBackgroundColor("#145274");
+        changeHeaderName("Paul");
+        addClassToElement("p", "large");
+        addNewLiElement();
+        pictureAfterHeader();
+        keinPlanBinMuede();
+
+        changeBackgroundColorRandom();
+        rotateImage()
+
+        img.classList.add("rotating ")
+        setInterval(changeBackgroundColorRandom, 50);
+      };
+    </script>
+  </body>
+</html>
