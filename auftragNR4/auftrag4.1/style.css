@@ -1,0 +1,40 @@
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Hintergrund blinkt */
+body.goofy {
+  animation: bgFlash 0.2s infinite;
+}
+
+@keyframes bgFlash {
+  0% { background: red; }
+  25% { background: yellow; }
+  50% { background: lime; }
+  75% { background: cyan; }
+  100% { background: magenta; }
+}
+
+/* Wrapper fliegt rum */
+.wrapper {
+  display: inline-block;
+  animation: fly 0.5s infinite alternate ease-in-out;
+}
+
+@keyframes fly {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(80vw, 10vh); }
+  50%  { transform: translate(20vw, 70vh); }
+  75%  { transform: translate(90vw, 80vh); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Bild selbst */
+.quadrat {
+  width: 400px;
+  height: 200px;
+  display: block;
+}
