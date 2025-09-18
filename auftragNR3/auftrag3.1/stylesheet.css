@@ -1,0 +1,17 @@
+.soccerField{
+    background-color: rgb(34, 171, 10);
+    height: 200px;
+    width: 400px;
+ &:hover{
+    cursor: pointer ;
+ }
+
+}
+
+.ball{
+    width: 50px;
+}
+
+.ball.hidden{
+    visibility: hidden;
+}

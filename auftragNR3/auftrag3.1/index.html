@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+  </head>
+  <body>
+    <h1 id="header1">0</h1>
+    <button id="ersterButton">Plus Eins lol</button>
+
+    <h1 id="header2">0</h1>
+    <button id="zweiterButton">Plus Eins lol zweiter knopf lol</button>
+
+    <div class="soccerField">
+      <img src="soccer-ball-svgrepo-com.svg" class="ball" draggable="false"/>
+    </div>
+
+    <script>
+      const ersterButton = document.querySelector("#ersterButton");
+      let counter1 = 0;
+      const header1 = document.querySelector("#header1");
+
+      const zweiterButton = document.querySelector("#zweiterButton");
+      let counter2 = 0;
+      const header2 = document.querySelector("#header2");
+
+      function updateHeader() {
+        header1.innerText = counter1;
+        header2.innerText = counter2;
+      }
+
+      ersterButton.addEventListener("click", () => {
+        counter1++;
+        updateHeader();
+      });
+
+      zweiterButton.addEventListener("click", () => {
+        counter2++;
+        updateHeader();
+      });
+
+      
+
+      const ball = document.querySelector(".ball");
+      const soccerField = document.querySelector(".soccerField");
+      ball.classList.add("hidden");
+
+      soccerField.addEventListener("click", () => {
+        ball.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
