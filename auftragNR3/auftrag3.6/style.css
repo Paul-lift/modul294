@@ -1,0 +1,27 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  background-color: blue;
+  height: 100%;
+  width: 100%;
+}
+
+img {
+    background-color: none;
+}
+
+img.hidden {
+  background-color: black;
+}
+
+img.solved {
+    opacity: 0;
+}

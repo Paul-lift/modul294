@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #board {
+                display: grid;
+                grid-template-columns: repeat(13, 1fr);
+                gap: 0.2rem;
+            }
+
+            #board img {
+                filter: brightness(0);
+                background-color: black;
+                user-select: none;
+                cursor: pointer;
+                transition: transform 1s, filter 1s;
+                transform: rotate3d(0, 1, 0, 0.5turn);
+            }
+
+            #board img.removed {
+                opacity: 0;
+            }
+
+            #board img.turned {
+                filter: none;
+                background-color: transparent;
+                transform: rotate3d(0, 0, 0, 0);
+            }
+        </style>
+        <script>
+            const cantons = ["ag", "be", "fr", "gr", "ne", "sg", "sz", "ur", "zg", "ai", "bl", "ge", "ju", "nw", "sh", "tg", "vd", "zh", "ar", "bs", "gl", "lu", "ow", "so", "ti", "vs"];
+            let selectedCards = [];
+
+            function checkSelectedCards() {
+                if (selectedCards[0].src === selectedCards[1].src) {
+                    selectedCards[0].classList.add("removed");
+                    selectedCards[1].classList.add("removed");
+                } else {
+                    selectedCards[0].classList.remove("turned");
+                    selectedCards[1].classList.remove("turned");
+                }
+                selectedCards = [];
+            };
+
+            function turnCard(event) {
+                if (event.target.classList.contains("turned")) {
+                    return;
+                }
+                if (selectedCards.length >= 2) {
+                    checkSelectedCards();
+                }
+                event.target.classList.add("turned");
+                selectedCards.push(event.target);
+            }
+
+            function getImagePath(canton) {
+                return `./img/${canton}.png`;
+            }
+
+            function createCard(canton) {
+                const card = document.createElement("img");
+                card.src = getImagePath(canton);
+                card.onclick = turnCard;
+                card.draggable = false;
+                return card;
+            }
+
+            function renderBoard(target) {
+                const allCantons = [ ...cantons, ...cantons ];
+                allCantons.sort(() => 0.5 - Math.random());
+                allCantons.forEach((canton) => {
+                    target.appendChild(createCard(canton));
+                });
+            }
+  
+            document.addEventListener("DOMContentLoaded", () => {
+                const boardEl = document.getElementById("board");
+                renderBoard(boardEl);
+            });
+        </script>
+    </head>
+
+    <body>
+        <div id="board"></div>
+    </body>
+
+</html>
