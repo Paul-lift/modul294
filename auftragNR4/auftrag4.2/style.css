@@ -1,0 +1,14 @@
+section {
+  transform: translateX(-1200px) rotate(100deg);
+  transition: 1s linear;
+}
+
+section.visible {
+  transform: translateX(0px) rotate(0deg);
+  transform: 1s linear;
+}
+
+img{
+    width: 750px;
+    height: 750px;
+}
