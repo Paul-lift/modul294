@@ -62,6 +62,94 @@ margin: 10px;           /* Außenabstand */
 padding: 5px;           /* Innenabstand */
 display: none;          /* Element verstecken */
 display: block;         /* Element anzeigen */
+display: grid;          /* Grid-Layout */
+```
+
+## Elemente verstecken - Wichtige Unterschiede!
+
+### display: none;
+```css
+.hidden { display: none; }
+```
+- Element ist **komplett weg** aus dem Layout
+- Nimmt **keinen Platz** ein
+- Andere Elemente rücken nach
+- **Nicht animierbar** (sofortige Änderung)
+
+### visibility: hidden;
+```css
+.invisible { visibility: hidden; }
+```
+- Element ist **unsichtbar** aber noch da
+- Nimmt **weiterhin Platz** ein (leerer Bereich bleibt)
+- Andere Elemente rücken **nicht** nach
+- **Animierbar** mit Transitions
+
+### opacity: 0;
+```css
+.transparent { opacity: 0; }
+```
+- Element ist **durchsichtig** aber noch da
+- Nimmt **weiterhin Platz** ein
+- **Interaktiv** (kann noch geklickt werden!)
+- **Sehr gut animierbar** und performant
+
+### Praxisvergleich
+```html
+<div>Element 1</div>
+<div class="hidden-method">Verstecktes Element</div>  
+<div>Element 3</div>
+```
+
+```css
+/* display: none - Element 3 rückt direkt nach Element 1 */
+.hidden-method { display: none; }
+
+/* visibility: hidden - Lücke bleibt zwischen Element 1 und 3 */
+.hidden-method { visibility: hidden; }
+
+/* opacity: 0 - Lücke bleibt, Element kann noch geklickt werden */
+.hidden-method { opacity: 0; }
+```
+
+## CSS Grid Grundlagen
+
+### Grid Container erstellen
+```css
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;    /* 3 gleiche Spalten */
+    grid-template-rows: 100px 200px;       /* 2 Zeilen mit festen Höhen */
+    gap: 10px;                             /* Abstand zwischen Items */
+}
+```
+
+### Grid-Template Beispiele
+```css
+/* Feste Spaltenbreiten */
+grid-template-columns: 200px 300px 100px;
+
+/* Flexible Spalten */
+grid-template-columns: 1fr 2fr 1fr;       /* 1:2:1 Verhältnis */
+
+/* Automatische Spalten */
+grid-template-columns: repeat(3, 1fr);    /* 3 gleiche Spalten */
+
+/* Responsive Grid */
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+```
+
+### Grid Items positionieren
+```css
+.item {
+    grid-column: 1 / 3;     /* Von Spalte 1 bis 3 */
+    grid-row: 1 / 2;        /* Von Zeile 1 bis 2 */
+}
+
+/* Oder kurz */
+.item {
+    grid-area: 1 / 1 / 2 / 3;  /* row-start / col-start / row-end / col-end */
+}
 ```
 
 ## JavaScript Grundlagen
