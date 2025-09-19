@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="app.js" defer></script>
+    <style>
+      #form {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+      }
+
+      input:valid {
+        border: 2px solid green;
+        background-color: #e6ffe6;
+      }
+
+      input:invalid {
+        border: 2px solid red;
+        background-color: #ffe6e6;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form">
+      <label for="email">Email</label>
+      <input type="email" name="email" />
+      <label for="passwordCreate">Passwort</label>
+      <input
+        type="password"
+        name="passwordCreate"
+        id=""
+        required
+        minlength="6"
+      />
+      <label for="passwordValidate">Passwort Bestätigen</label>
+      <input
+        type="password"
+        name="passwordValidate"
+        id=""
+        required
+        minlength="6"
+      />
+
+      <label for="agb">AGB Akzeptieren</label>
+      <input type="checkbox" name="agb" required />
+
+      <button type="submit" name="register" disabled>Regrieren</button>
+    </form>
+  </body>
+</html>
