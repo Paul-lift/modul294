@@ -90,6 +90,94 @@ const children = parent.childNodes;  // Enthält auch Text-Knoten!
 const children = parent.querySelectorAll("li");  // Nur li-Elemente
 ```
 
+## Children-Methoden für DOM-Manipulation
+
+### children (nur Element-Knoten)
+```javascript
+const parent = document.querySelector("ul");
+const children = parent.children;  // Nur HTML-Elemente, keine Text-Knoten
+console.log(children.length);      // Anzahl Kind-Elemente
+```
+
+### appendChild() - Element hinzufügen
+```javascript
+const parent = document.querySelector("ul");
+const newElement = document.createElement("li");
+newElement.textContent = "Neues Listenelement";
+parent.appendChild(newElement);  // Am Ende hinzufügen
+```
+
+### removeChild() - Element entfernen
+```javascript
+const parent = document.querySelector("ul");
+const childToRemove = document.querySelector("#remove-me");
+parent.removeChild(childToRemove);
+
+// Oder einfacher (moderne Methode):
+childToRemove.remove();
+```
+
+### replaceChildren() - Alle Kinder ersetzen
+```javascript
+const parent = document.querySelector("ul");
+const newChild1 = document.createElement("li");
+const newChild2 = document.createElement("li");
+
+newChild1.textContent = "Erstes neues Element";
+newChild2.textContent = "Zweites neues Element";
+
+// Alle alten Kinder ersetzen durch neue
+parent.replaceChildren(newChild1, newChild2);
+
+// Oder alle Kinder entfernen:
+parent.replaceChildren();
+```
+
+### insertBefore() - Element an bestimmter Position einfügen
+```javascript
+const parent = document.querySelector("ul");
+const newElement = document.createElement("li");
+const referenceElement = parent.children[1];  // 2. Element
+
+newElement.textContent = "Eingefügtes Element";
+parent.insertBefore(newElement, referenceElement);  // Vor 2. Element einfügen
+```
+
+### firstElementChild / lastElementChild
+```javascript
+const parent = document.querySelector("ul");
+const firstChild = parent.firstElementChild;  // Erstes Kind-Element
+const lastChild = parent.lastElementChild;    // Letztes Kind-Element
+
+console.log(firstChild.textContent);
+console.log(lastChild.textContent);
+```
+
+### nextElementSibling / previousElementSibling
+```javascript
+const element = document.querySelector("#middle-element");
+const nextSibling = element.nextElementSibling;     // Nächstes Geschwister-Element
+const prevSibling = element.previousElementSibling; // Vorheriges Geschwister-Element
+```
+
+### Praktisches Beispiel: Liste dynamisch aufbauen
+```javascript
+window.onload = function() {
+    const parent = document.querySelector("#dynamic-list");
+    const items = ["Apfel", "Banane", "Orange"];
+    
+    // Alle alten Einträge ersetzen
+    const newElements = items.map(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        li.className = "fruit-item";
+        return li;
+    });
+    
+    parent.replaceChildren(...newElements);
+};
+```
+
 ## Häufige Prüfungsfragen
 
 ### "Erstes Element einer Liste selektieren"
