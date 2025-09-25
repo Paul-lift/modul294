@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      async function getToken() {
+        const res = await fetch("http://10.71.4.25/challenges/1", {
+          method: "POST",
+        });
+        return res.headers.get("Authorization");
+      }
+
+      async function submitComment(token, username, message) {
+        await fetch("http://10.71.4.25/comments", {
+          method: "POST",
+          body: JSON.stringify({ message: message, username: username }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const formEl = document.querySelector("form");
+        formEl.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const formData = new FormData(event.currentTarget);
+          const token = await getToken();
+          await submitComment(
+            token,
+            formData.get("username"),
+            formData.get("message")
+          );
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <form>
+      <label
+        >Name
+        <input type="text" name="username" />
+      </label>
+
+      <label
+        >Message
+        <textarea name="message"></textarea>
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
