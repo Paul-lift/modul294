@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="app.js" defer></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+      }
+
+      form input, form select {
+        margin: 0.5rem 0;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 250px;
+      }
+
+      form label {
+        font-weight: bold;
+        margin-top: 1rem;
+      }
+
+      .buttons {
+        margin-top: 1rem;
+        gap: 1rem;
+        display: flex;
+      }
+
+      button {
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      button[type="submit"] {
+        background: #007bff;
+        color: white;
+      }
+
+      button[type="reset"] {
+        background: #6c757d;
+        color: white;
+      }
+
+      /* Freunde-Container Styling */
+      .friendsContainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+      }
+
+      .friendContainer {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border-left: 4px solid #007bff;
+        transition: transform 0.2s ease;
+      }
+
+      .friendContainer:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      }
+
+      .friend-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 0.5rem;
+      }
+
+      .friend-header h3 {
+        margin: 0;
+        color: #333;
+        font-size: 1.3rem;
+      }
+
+      .delete-btn {
+        background: #dc3545;
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.2s ease;
+      }
+
+      .delete-btn:hover {
+        background: #c82333;
+        transform: scale(1.1);
+      }
+
+      .friend-details p {
+        margin: 0.5rem 0;
+        color: #555;
+        line-height: 1.5;
+      }
+
+      .friend-details strong {
+        color: #333;
+      }
+
+        
+    </style>
+  </head>
+  <body>
+    <form id="form">
+      <h1>Add new Friend</h1>
+      <label for="firstName">First Name</label>
+      <input type="text" name="firstName" required />
+
+      <label for="lastName">Last Name</label>
+      <input type="text" name="lastName" required />
+
+      <label for="street">Street</label>
+      <input type="text" name="street" required />
+
+      <label for="PLZ">PLZ</label>
+      <input type="number" name="plz" required />
+
+      <label for="location">Location</label>
+      <input type="text" name="location" required />
+
+      <select name="fromWhere" id="" required>
+        <option value="school">Schule</option>
+        <option value="work">Arbeit</option>
+      </select>
+
+      <div class="buttons">
+        <button type="submit" name="submit">submit</button>
+        <button type="reset" name="reset">reset</button>
+      </div>
+    </form>
+    <div class="friendsContainer"></div>
+  </body>
+</html>

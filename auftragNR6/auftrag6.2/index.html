@@ -13,12 +13,12 @@
         align-items: start;
       }
 
-      input:valid {
+      input:user-valid {
         border: 2px solid green;
         background-color: #e6ffe6;
       }
 
-      input:invalid {
+      input:user-invalid {
         border: 2px solid red;
         background-color: #ffe6e6;
       }
@@ -27,12 +27,11 @@
   <body>
     <form id="form">
       <label for="email">Email</label>
-      <input type="email" name="email" />
+      <input type="email" name="email" required/>
       <label for="passwordCreate">Passwort</label>
       <input
         type="password"
         name="passwordCreate"
-        id=""
         required
         minlength="6"
       />
@@ -40,7 +39,6 @@
       <input
         type="password"
         name="passwordValidate"
-        id=""
         required
         minlength="6"
       />
@@ -48,7 +46,7 @@
       <label for="agb">AGB Akzeptieren</label>
       <input type="checkbox" name="agb" required />
 
-      <button type="submit" name="register" disabled>Regrieren</button>
+      <button type="submit" name="register" disabled>Regisiteren</button>
     </form>
   </body>
 </html>
